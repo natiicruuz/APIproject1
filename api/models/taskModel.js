@@ -1,7 +1,7 @@
-import mongoose from 'mongoose';
+const mongoose = require('mongoose')
 const { Schema } = mongoose;
 
-const task = new Schema({
+const taskSchema = new Schema({
     taskName: {
         type: String,
         required: "Enter your name",
@@ -16,12 +16,12 @@ const task = new Schema({
         max: 3, 
         default: 2 
     },
-    Created_date: {
+    created_date: {
       type: Date,
       default: Date.now,
     },
   });
-
+  
   // Create task model
 const Task = mongoose.model('Task', taskSchema);
 
