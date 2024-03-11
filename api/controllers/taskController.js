@@ -17,16 +17,19 @@ exports.read_a_task = async (req,res) => {
 //POST TASK 
 exports.create_a_task = async (req,res) =>{
 
-    let task = await Task.findOne({email: req.body.email})
+    let task = await Task.findOne({taskName: req.body.taskName})
     if(task) return res.status(400).send('Task already exists')
 
     task = new Task({
         taskName:req.body.taskName, 
         description: req.body.description,
-        priority: priority
+        priority: req.body.priority
     })
 
     const result = await task.save() 
+    res.status(200).send("Task Created: " + task)
+
+    
 }
 
 //PUT TASK 
@@ -36,7 +39,7 @@ exports.update_a_task = async (req,res) => {
     const task = await Task.findByIdAndUpdate(req.params.id,{
         taskName:req.body.taskName, 
         description: req.body.description,
-        priority: priority
+        priority: req.body.priority
     },{
         new: true
     })

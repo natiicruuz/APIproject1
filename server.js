@@ -9,11 +9,12 @@ const app = express()
 const apiUsers = require("./api/routes/userRoutes")
 const apiTasks = require("./api/routes/taskRoutes")
 
+//middlewares
 app.use(express.json()) //#1
 app.use('/api/users', apiUsers) //#2
 app.use('/api/tasks', apiTasks) //#3
 
-const port = process.env.PORT || 3000;
+const port = process.env.PORT || 3003;
 app.listen(port);
 console.log("Server started on: " + port);
 

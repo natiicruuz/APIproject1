@@ -1,5 +1,4 @@
 const mongoose = require('mongoose')
-const jwt = require('jsonwebtoken')
 
 const { Schema } = mongoose;
 
@@ -22,14 +21,6 @@ const userSchema = new Schema({
       default: Date.now,
     },
   });
-
-userSchema.methods.generateJWT = function(){
-
-  return jwt.sign({
-    _id: this._id,
-    name: this.name
-  }, process.env.SECRET_KEY_JWT_API)
-}
 
     // Create user model
 const User = mongoose.model('User', userSchema);
