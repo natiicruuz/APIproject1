@@ -104,7 +104,7 @@ exports.user_login = async(req,res) => {
     if(userFound){
         const jwtToken = await this.generateJWT(userFound.name, userFound.email, userFound.password);
 
-        return res.status(200).send("token sent" + jwtToken)
+        return res.status(200).send("token:  " + jwtToken)
     }
 
     return res.status(401).send("error no auth")
